@@ -1,0 +1,60 @@
+#### DJANGO COMMAND
+# Create project and app
+django-admin startproject mysite
+.\manage.py startapp myapp
+
+#Update on the DB (to run everytime for the update to take place)
+.\manage.py migrate
+
+#Change on an app models
+.\manage.py makemigrations myapp
+
+#To check DB schema
+.\manage.py sqlmigrate myapp id_migration
+
+#### TO ADD DEBUG
+
+#Link
+https://django-debug-toolbar.readthedocs.io/en/latest/installation.html
+
+#Prerequisites
+INSTALLED_APPS = [
+    # ...
+    "django.contrib.staticfiles",
+    # ...
+]
+
+STATIC_URL = "static/"
+
+TEMPLATES = [
+    {
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "APP_DIRS": True,
+        # ...
+    }
+]
+
+#Install
+settings:
+INSTALLED_APPS = [
+    # ...
+    "debug_toolbar",
+    # ...
+]
+MIDDLEWARE = [
+    # ...
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
+    # ...
+]
+INTERNAL_IPS = [
+    # ...
+    "127.0.0.1",
+    # ...
+]
+
+from django.urls import include, path
+urls:
+urlpatterns = [
+    # ...
+    path("__debug__/", include("debug_toolbar.urls")),
+]
