@@ -80,15 +80,19 @@ class ExperienceAdmin(admin.ModelAdmin):
 	inlines=[ExperienceDetailInLine]
 
 	formfield_overrides = {
-		models.CharField: {'widget': TextInput(attrs={'size':'30'})},
+		models.CharField: {'widget': TextInput(attrs={'size':'50'})},
         models.TextField: {'widget': Textarea(attrs={'rows':text_field_rows, 'cols':text_field_cols})},
 	}
 
+	list_filter = ["type_experience"]
+
 class FormationAdmin(admin.ModelAdmin):
 	formfield_overrides = {
-		models.CharField: {'widget': TextInput(attrs={'size':'30'})},
+		models.CharField: {'widget': TextInput(attrs={'size':'100'})},
         models.TextField: {'widget': Textarea(attrs={'rows':text_field_rows, 'cols':text_field_cols})},
 	}
+
+	list_filter = ["starting_date"]
 
 # Register your models here.
 admin.site.register(GlobalInformation, GlobalInformationAdmin)

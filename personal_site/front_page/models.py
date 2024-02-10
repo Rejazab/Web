@@ -28,11 +28,11 @@ class Experience(models.Model):
 	type_experience = models.CharField(max_length=5,choices=TYPE_EXPERIENCES)
 	programming_languages = models.TextField(max_length=200)
 	tools_used = models.TextField(max_length=200)
-	description = models.TextField(max_length=1000)
+	description = models.TextField(max_length=2000)
 	
 	#for type_experience == "pro":
-	starting_date = models.DateTimeField(null=True)
-	ending_date = models.DateTimeField(null=True)
+	starting_date = models.DateField(null=True)
+	ending_date = models.DateField(null=True)
 	job_title = models.CharField(max_length=100)
 	company = models.CharField(max_length=100)
 	city = models.CharField(max_length=100)
@@ -42,19 +42,19 @@ class Experience(models.Model):
 
 class ExperienceDetail(models.Model):
 	experience = models.ForeignKey(Experience, on_delete=models.CASCADE)
-	goal = models.TextField(max_length=500)
-	detail = models.TextField(max_length=1000)
-	accomplishment = models.TextField(max_length=500)
+	goal = models.TextField(max_length=1000)
+	detail = models.TextField(max_length=2000)
+	accomplishment = models.TextField(max_length=1000)
 
 	def __str__(self):
 		return self.goal[:50]
 
 class Formation(models.Model):
 	language = models.ForeignKey(GlobalInformation, on_delete=models.CASCADE)
-	starting_date = models.DateTimeField()
-	ending_date = models.DateTimeField()
+	starting_date = models.DateField()
+	ending_date = models.DateField()
 	title = models.CharField(max_length=100)
-	accomplishment = models.TextField(max_length=500)
+	accomplishment = models.TextField(max_length=1000)
 
 	def __str__(self):
 		return self.title
