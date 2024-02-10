@@ -11,7 +11,6 @@ class GlobalInformation(models.Model):
 	first_name = models.CharField(max_length=20)
 	job_title = models.CharField(max_length=20)
 	mail = models.EmailField()
-	phone_number = models.CharField(max_length=12)
 	linkedin = models.URLField(max_length=200)
 	github = models.URLField(max_length=200)
 	codingame = models.URLField(max_length=200)
@@ -27,9 +26,9 @@ class Experience(models.Model):
 	}
 	language = models.ForeignKey(GlobalInformation, on_delete=models.CASCADE)
 	type_experience = models.CharField(max_length=5,choices=TYPE_EXPERIENCES)
-	programming_languages = models.CharField(max_length=200)
-	tools_used = models.CharField(max_length=200)
-	description = models.CharField(max_length=1000)
+	programming_languages = models.TextField(max_length=200)
+	tools_used = models.TextField(max_length=200)
+	description = models.TextField(max_length=1000)
 	
 	#for type_experience == "pro":
 	starting_date = models.DateTimeField(null=True)
@@ -43,9 +42,9 @@ class Experience(models.Model):
 
 class ExperienceDetail(models.Model):
 	experience = models.ForeignKey(Experience, on_delete=models.CASCADE)
-	goal = models.CharField(max_length=500)
-	detail = models.CharField(max_length=1000)
-	accomplishment = models.CharField(max_length=500)
+	goal = models.TextField(max_length=500)
+	detail = models.TextField(max_length=1000)
+	accomplishment = models.TextField(max_length=500)
 
 	def __str__(self):
 		return self.goal[:50]
@@ -55,14 +54,14 @@ class Formation(models.Model):
 	starting_date = models.DateTimeField()
 	ending_date = models.DateTimeField()
 	title = models.CharField(max_length=100)
-	accomplishment = models.CharField(max_length=500)
+	accomplishment = models.TextField(max_length=500)
 
 	def __str__(self):
 		return self.title
 
 class AboutMe(models.Model):
 	language = models.ForeignKey(GlobalInformation, on_delete=models.CASCADE)
-	description_text = models.CharField(max_length = 500)
-	extra_profesionnal_sports = models.CharField(max_length = 500)
-	extra_profesionnal_activity = models.CharField(max_length = 500)
+	description_text = models.TextField(max_length = 500)
+	extra_profesionnal_sports = models.TextField(max_length = 500)
+	extra_profesionnal_activity = models.CharField(max_length = 100)
 

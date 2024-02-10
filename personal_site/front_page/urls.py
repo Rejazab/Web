@@ -3,7 +3,8 @@ from . import views
 
 app_name = "front_page"
 urlpatterns = [
-	path("",views.IndexView.as_view(),name="index"),
+	path("", views.index, name="index"),
+	path("<str:language>/", views.index, name="focus_index"),
 ]
 """urlpatterns = [
 	path("",views.IndexView.as_view(),name="index"),

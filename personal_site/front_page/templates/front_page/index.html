@@ -1,5 +1,19 @@
-{% extends "header.html" %}
-
-
-
-{% extends "footer.html" %}
+<html> 
+<head> 
+</head> 
+<body> 
+  {% block header %} 
+    <header> 
+      This is a header
+    </header> 
+  {% endblock %} 
+  {% block content %} 
+    ........ 
+  {% endblock %} 
+  {% block footer %} 
+    <footer> 
+      This is a footer 
+    </footer> 
+  {% endblock %} 
+  </body> 
+</html>
